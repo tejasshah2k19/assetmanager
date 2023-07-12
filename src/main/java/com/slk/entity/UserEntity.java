@@ -1,5 +1,6 @@
 package com.slk.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,6 +18,8 @@ public class UserEntity {
 	String email;
 	String lastName;
 	String password;
+	@Column(length = 8)
+	String otp; 
 
 	public Integer getUserId() {
 		return userId;
@@ -58,4 +61,13 @@ public class UserEntity {
 		this.password = password;
 	}
 
+	public String getOtp() {
+		return otp;
+	}
+
+	public void setOtp(String otp) {
+		this.otp = otp;
+	}
+
+	
 }
