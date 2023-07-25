@@ -1,5 +1,7 @@
 package com.slk.entity;
 
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,7 +22,7 @@ public class UserEntity {
 	String password;
 	@Column(length = 8)
 	String otp; 
-
+	Date deletedAt;//null
 	public Integer getUserId() {
 		return userId;
 	}
@@ -67,6 +69,14 @@ public class UserEntity {
 
 	public void setOtp(String otp) {
 		this.otp = otp;
+	}
+
+	public Date getDeletedAt() {
+		return deletedAt;
+	}
+
+	public void setDeletedAt(Date deletedAt) {
+		this.deletedAt = deletedAt;
 	}
 
 	

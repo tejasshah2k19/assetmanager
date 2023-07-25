@@ -61,9 +61,11 @@ public class SessionController {
 			// plaintext
 			// db->encrypted
 			UserEntity user = opt.get();
-			if (bCryptPasswordEncoder.matches(loginDto.getPassword(), user.getPassword())) {
-				//
-				return "Home";
+			if (user.getDeletedAt() == null) {
+				if (bCryptPasswordEncoder.matches(loginDto.getPassword(), user.getPassword())) {
+					//
+					return "Home";
+				}
 			}
 		}
 		model.addAttribute("error", "Invalid Credentials...");
