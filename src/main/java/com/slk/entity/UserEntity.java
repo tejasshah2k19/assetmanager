@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,8 +23,13 @@ public class UserEntity {
 	String lastName;
 	String password;
 	@Column(length = 8)
-	String otp; 
-	Date deletedAt;//null
+	String otp;
+	Date deletedAt;// null
+
+	@ManyToOne
+	@JoinColumn(name = "roleId", referencedColumnName = "roleId")
+	RoleEntity role;
+
 	public Integer getUserId() {
 		return userId;
 	}
@@ -64,6 +71,7 @@ public class UserEntity {
 	}
 
 	public String getOtp() {
+
 		return otp;
 	}
 
@@ -79,5 +87,12 @@ public class UserEntity {
 		this.deletedAt = deletedAt;
 	}
 
-	
+	public RoleEntity getRole() {
+		return role;
+	}
+
+	public void setRole(RoleEntity role) {
+		this.role = role;
+	}
+
 }

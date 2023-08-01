@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.slk.dto.LoginDto;
 import com.slk.dto.ResetPasswordDto;
+import com.slk.entity.RoleEntity;
 import com.slk.entity.UserEntity;
+import com.slk.repository.RoleRepository;
 import com.slk.repository.UserRepository;
 import com.slk.service.MailerService;
 import com.slk.service.OtpGenerator;
@@ -30,7 +32,10 @@ public class SessionController {
 
 	@Autowired
 	MailerService mailerService;
-
+	
+	@Autowired
+	RoleRepository roleRepo;
+	
 	@GetMapping("signup")
 	public String signup() {
 		return "Signup";
@@ -41,7 +46,10 @@ public class SessionController {
 
 		String encPassword = bCryptPasswordEncoder.encode(user.getPassword());
 		user.setPassword(encPassword);
-
+		RoleEntity role = roleRepo.findByRoleName("USER");
+		user.setRole(role);
+ 		 
+		
 		userRepo.save(user);
 		return "Login";
 	}
