@@ -27,6 +27,14 @@ public class UserController {
 		return "ListUsers";
 	}
 
+	@GetMapping("/listactiveusers")
+	public String listActiveUsers(Model model) {
+
+		List<UserEntity> users = userRepo.getActiveUsers(); // List<UserEn>
+		model.addAttribute("users",users);
+		return "ListActiveUsers";
+	}
+
 	@GetMapping("/deleteuser/{userId}")
 	public String deleteUser(@PathVariable("userId") Integer userId) {
 		

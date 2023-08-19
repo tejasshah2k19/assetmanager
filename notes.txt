@@ -1,1 +1,22 @@
 do no add secret key in github
+
+
+
+industry -> file upload   -> CRUD
+		add -> file upload , single industry add 
+		read -> list all industries 
+		edit -> 
+		delete -> 
+		
+equity -> 
+	 
+	industry  1 : equity M 
+	add -> file upload , single add 
+	update->file upload , single , scheduler   
+	9.30 -> 15 min
+	4.00 ->  
+	
+	2500 
+	1250
+	
+	list -> all equity 
