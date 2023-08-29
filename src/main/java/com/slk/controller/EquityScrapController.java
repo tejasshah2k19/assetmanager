@@ -1,17 +1,21 @@
 package com.slk.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.client.RestTemplate;
 
+import com.slk.service.EquityScrapService;
+
 @Controller
 public class EquityScrapController {
 
+	@Autowired
+	EquityScrapService eqScrapService; 
+	
 	@GetMapping("/scrap")
 	public String scrap() {
-		RestTemplate rt = new RestTemplate();
-//		rt.getForObject("https://www.nseindia.com//api/equity-stockIndices?index=NIFTY%2050", Objec);
- 
-		return "Signup";
+		eqScrapService.scrapPriceForDb(); 
+		return "redirect:/listequity";
 	}
 }
