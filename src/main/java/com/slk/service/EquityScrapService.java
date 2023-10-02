@@ -127,4 +127,8 @@ public class EquityScrapService {
 		}
 	}
 
+	
+	public void scrapForTechnical() {
+		
+	}
 }
